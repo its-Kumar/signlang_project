@@ -1,3 +1,5 @@
+import pathlib
+
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
@@ -5,14 +7,19 @@ from tensorflow import keras
 from tensorflow.keras.preprocessing import image as image_utils
 
 # * GLOBALS
+BASE_DIR = pathlib.Path(__file__).parent.parent
+
+
 # Alphabet does not contain j or z because they require movement
 ALPHABETS = "abcdefghiklmnopqrstuvwxy"
 dictionary = {}
 for i in range(24):
     dictionary[i] = ALPHABETS[i]
 
+model_path = BASE_DIR / 'models/3_sl_augmented_model'
+print(model_path)
 # Load saved model
-model = keras.models.load_model('../models/3_sl_augmented_model')
+model = keras.models.load_model(model_path)
 
 
 # Show the image
@@ -32,13 +39,10 @@ def load_and_scale_image(image_path):
 
 
 # Predicting the letter
-def predict_letter(file_path):
+def predict_letter(image):
     # Show image
     # // show_image(file_path)
     # Load and scale image
-    image = load_and_scale_image(file_path)
-    # Convert to array
-    image = image_utils.img_to_array(image)
     # Reshape image
     image = image.reshape(1, 28, 28, 1)
     # Normalize image

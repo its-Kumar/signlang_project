@@ -1,5 +1,29 @@
 # Sign Language Detection
 
+## How to Run
+
+* Setup Environment
+
+```bash
+$ git clone https://github.com/its-Kumar/signlang_project.git
+$ cd signlang_project
+$ pip install virtualenv
+$ virtualenv venv
+$ source venv/bin/activate
+```
+
+* Install requirements
+
+```bash
+$ pip install -r requirements.txt
+```
+
+* Running the application
+
+```bash
+$ python src/main.py
+```
+
 ## Image Classification of an American Sign Language Dataset
 
   The American Sign Language alphabet contains 26 letters. Two of those letters (j and z) require movement, so they are not included in the training dataset.
@@ -33,7 +57,8 @@ Creating a `model` variable to store the model. We've imported the Keras [Sequen
 
   These days, many data scientists start their projects by borrowing model properties from a similar project. Assuming the problem is not totally unique, there's a great chance that people have created models that will perform well which are posted in online repositories like [TensorFlow Hub](https://www.tensorflow.org/hub) and the [NGC Catalog](https://ngc.nvidia.com/catalog/models). Today, we'll provide a model that will work well for this problem.
 
-  ![cnn](src/images/cnn.png)
+  <img src="src/images/cnn.png" width=300 />
+
 
   We covered many of the different kinds of layers in the notebook, and we will go over them all here with links to their documentation. When in doubt, read the official documentation (or ask [stackoverflow](https://stackoverflow.com/)).
 
