@@ -6,11 +6,14 @@ cap = cv2.VideoCapture(-1)
 
 while True:
     ret, frame = cap.read()
+    
+        # Region of interest
+    roi = frame[40:300, 50:350]
+    
     # draw rectangle
-    cv2.rectangle(frame, (90, 50), (540, 450), (255, 0, 0), 4)
+    cv2.rectangle(frame, (40, 50), (300, 350), (255, 0, 0), 4)
 
-    # Region of interest
-    roi = frame[50:450, 90:540]
+
 
     # convert to grayscale
     roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
