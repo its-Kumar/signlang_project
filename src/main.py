@@ -14,7 +14,6 @@ while True:
     cv2.rectangle(frame, (40, 50), (300, 350), (255, 0, 0), 4)
 
 
-
     # convert to grayscale
     roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
 
