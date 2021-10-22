@@ -1,31 +1,18 @@
-import pathlib
 
 import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
-from tensorflow import keras
 from tensorflow.keras.preprocessing import image as image_utils
 
-# * GLOBALS
-BASE_DIR = pathlib.Path(__file__).parent.parent
-
-
-# Alphabet does not contain j or z because they require movement
-ALPHABETS = "abcdefghiklmnopqrstuvwxy"
-dictionary = {}
-for i in range(24):
-    dictionary[i] = ALPHABETS[i]
-
-model_path = BASE_DIR / 'models/3_sl_augmented_model'
-print(model_path)
-# Load saved model
-model = keras.models.load_model(model_path)
+from .conf import BASE_DIR, dictionary
+from .load_model import load_saved_model
 
 
 # Show the image
 def show_image(image_path):
     image = mpimg.imread(image_path)
     plt.imshow(image, cmap='gray')
+    plt.show()
 
 
 # Loading and scaling the image
@@ -39,7 +26,7 @@ def load_and_scale_image(image_path):
 
 
 # Predicting the letter
-def predict_letter(image):
+def predict_letter(model, image):
     # Show image
     # // show_image(file_path)
     # Load and scale image
@@ -56,6 +43,9 @@ def predict_letter(image):
 
 
 if __name__ == "__main__":
-    image_path = '../data/asl_images/a.png'
-    # // show_image(image_path)
-    print(predict_letter(image_path))
+    image_path = BASE_DIR / 'data/asl_images/a.png'
+    # show_image(image_path)
+    image = load_and_scale_image(image_path)
+    image = np.array(image, dtype=np.uint8)
+    model = load_saved_model('3_sl_aug_model')
+    print(predict_letter(model, image))
