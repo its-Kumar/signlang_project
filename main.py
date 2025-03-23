@@ -1,11 +1,10 @@
-# import libraries
 import cv2
 
-from src.utils.load_model import load_saved_model
-from src.utils.prediction import predict_letter
+from utils.load_model import load_saved_model
+from utils.prediction import predict_letter
 
 # load the model
-model = load_saved_model('3_sl_aug_model')
+model = load_saved_model("3_sl_aug_model")
 
 # capture the video
 cap = cv2.VideoCapture(0)
@@ -24,7 +23,7 @@ while True:
 
     # resize ROI into 28x28
     roi = cv2.resize(roi, (28, 28), interpolation=cv2.INTER_AREA)
-    cv2.imshow('roi', roi)
+    cv2.imshow("roi", roi)
 
     result = predict_letter(model, roi)
 
@@ -32,10 +31,10 @@ while True:
         frame, result, (300, 100),
         cv2.FONT_HERSHEY_COMPLEX, 2, (0, 255, 0),
         2)
-    cv2.imshow('frame', frame)
+    cv2.imshow("frame", frame)
 
     # close by pressing 'q'
-    if cv2.waitKey(1) & 0xFF == ord('q'):
+    if cv2.waitKey(1) & 0xFF == ord("q"):
         break
 
 # release the capture and windows

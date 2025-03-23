@@ -8,8 +8,8 @@
 $ git clone https://github.com/its-Kumar/signlang_project.git
 $ cd signlang_project
 $ pip install virtualenv
-$ virtualenv venv
-$ source venv/bin/activate
+$ virtualenv .venv
+$ source .venv/bin/activate
 ```
 
 * Install requirements
@@ -27,7 +27,7 @@ $ python src/main.py
 ## Image Classification of an American Sign Language Dataset
 
   The American Sign Language alphabet contains 26 letters. Two of those letters (j and z) require movement, so they are not included in the training dataset.
-  ![img](src/images/asl.png)
+  ![img](images/asl.png)
 
 ### kaggle
 
@@ -57,14 +57,14 @@ Creating a `model` variable to store the model. We've imported the Keras [Sequen
 
   These days, many data scientists start their projects by borrowing model properties from a similar project. Assuming the problem is not totally unique, there's a great chance that people have created models that will perform well which are posted in online repositories like [TensorFlow Hub](https://www.tensorflow.org/hub) and the [NGC Catalog](https://ngc.nvidia.com/catalog/models). Today, we'll provide a model that will work well for this problem.
 
-  <img src="src/images/cnn.png" width=300 />
+  <img src="images/cnn.png" width=300 />
 
 
   We covered many of the different kinds of layers in the notebook, and we will go over them all here with links to their documentation. When in doubt, read the official documentation (or ask [stackoverflow](https://stackoverflow.com/)).
 
 ### [Conv2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Conv2D)
 
-  <img src="src/images/conv2d.png" width=300 />
+  <img src="images/conv2d.png" width=300 />
 
   These are our 2D convolutional layers. Small kernels will go over the input image and detect features that are important for classification. Earlier convolutions in the model will detect simple features such as lines. Later convolutions will detect more complex features. Let's look at our first Conv2D layer:
 
@@ -83,13 +83,13 @@ Creating a `model` variable to store the model. We've imported the Keras [Sequen
 
 ### [MaxPool2D](https://www.tensorflow.org/api_docs/python/tf/keras/layers/MaxPool2D)
 
-  <img src="src/images/maxpool2d.png" width=300 />
+  <img src="images/maxpool2d.png" width=300 />
 
   Max pooling takes an image and essentially shrinks it to a lower resolution. It does this to help the model be robust to translation (objects moving side to side), and also makes our model faster.
 
 ### [Dropout](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dropout)
 
-  <img src="src/images/dropout.png" width=360 />
+  <img src="images/dropout.png" width=360 />
 
   Dropout is a technique for preventing overfitting. Dropout randomly selects a subset of neurons and turns them off, so that they do not participate in forward or backward propagation in that particular pass. This helps to make sure that the network is robust and redundant, and does not rely on any one area to come up with answers.
 
@@ -100,3 +100,8 @@ Creating a `model` variable to store the model. We've imported the Keras [Sequen
 ### [Dense](https://www.tensorflow.org/api_docs/python/tf/keras/layers/Dense)
 
   We have seen dense layers before in our earlier models. Our first dense layer (512 units) takes the feature vector as input and learns which features will contribute to a particular classification. The second dense layer (24 units) is the final classification layer that outputs our prediction.
+
+
+## Author
+
+Kumar Shanu
